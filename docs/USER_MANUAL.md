@@ -29,10 +29,14 @@
 
 | Component | Minimum |
 |-----------|---------|
-| Browser | Chrome 100+, Firefox 100+, Safari 16+, Edge 100+ |
+| Desktop Browser | Chrome 100+, Firefox 100+, Safari 16+, Edge 100+ |
+| Mobile Browser | Chrome (Android), Safari (iOS 16+), Samsung Internet |
 | Internet | 5 Mbps broadband |
-| Screen | 1280 × 720 minimum (1920 × 1080 recommended) |
-| OS | Any modern desktop or mobile OS |
+| Desktop Screen | 1280 × 720 minimum (1920 × 1080 recommended) |
+| Mobile Screen | 375px width minimum (iPhone SE and above) |
+| OS | Windows 10+, macOS 12+, Linux, iOS 16+, Android 12+ |
+
+> **Mobile Support:** The platform is fully responsive. On mobile devices, the sidebar collapses into a slide-out drawer accessible via the hamburger menu. All features including Client Intake, Case Management, Contract Agent, and Document Management are fully functional on mobile.
 
 ### 1.2 Accessing the Platform
 
