@@ -218,7 +218,7 @@ export function TopNav({ onMenuClick, currentUser, className }: TopNavProps) {
                   <div>
                     <p className="px-4 pt-2 pb-1 text-[10px] font-semibold uppercase tracking-wider text-slate-400">Cases</p>
                     {searchResults.cases.map((c: any) => (
-                      <a key={c.id} href={`/cases/${c.id}`} className="flex items-center gap-2 px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" onClick={() => { setSearchOpen(false); setSearchQuery(''); setSearchResults(null) }}>
+                      <a key={c.id} href={`/cases/${c.id}`} title={`${c.caseNumber ? c.caseNumber + ' — ' : ''}${c.title || ''}`} className="flex items-center gap-2 px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" onClick={() => { setSearchOpen(false); setSearchQuery(''); setSearchResults(null) }}>
                         <span className="text-blue-600">⚖️</span>
                         <span className="truncate text-slate-900 dark:text-white">{c.caseNumber || c.title}</span>
                       </a>
@@ -229,7 +229,7 @@ export function TopNav({ onMenuClick, currentUser, className }: TopNavProps) {
                   <div>
                     <p className="px-4 pt-2 pb-1 text-[10px] font-semibold uppercase tracking-wider text-slate-400">Contracts</p>
                     {searchResults.contracts.map((c: any) => (
-                      <a key={c.id} href={`/contracts/${c.id}`} className="flex items-center gap-2 px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" onClick={() => { setSearchOpen(false); setSearchQuery(''); setSearchResults(null) }}>
+                      <a key={c.id} href={`/contracts/${c.id}`} title={c.title || ''} className="flex items-center gap-2 px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" onClick={() => { setSearchOpen(false); setSearchQuery(''); setSearchResults(null) }}>
                         <span className="text-blue-600">📄</span>
                         <span className="truncate text-slate-900 dark:text-white">{c.title}</span>
                       </a>
@@ -240,7 +240,7 @@ export function TopNav({ onMenuClick, currentUser, className }: TopNavProps) {
                   <div>
                     <p className="px-4 pt-2 pb-1 text-[10px] font-semibold uppercase tracking-wider text-slate-400">Documents</p>
                     {searchResults.documents.map((d: any) => (
-                      <a key={d.id} href={`/documents`} className="flex items-center gap-2 px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" onClick={() => { setSearchOpen(false); setSearchQuery(''); setSearchResults(null) }}>
+                      <a key={d.id} href={`/documents`} title={d.title || d.name || ''} className="flex items-center gap-2 px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" onClick={() => { setSearchOpen(false); setSearchQuery(''); setSearchResults(null) }}>
                         <span className="text-blue-600">📁</span>
                         <span className="truncate text-slate-900 dark:text-white">{d.title || d.name}</span>
                       </a>
