@@ -63,9 +63,7 @@ export default function SignInPage() {
       <div className="relative z-10 w-full max-w-md">
         {/* Logo */}
         <div className="mb-8 flex flex-col items-center gap-3">
-          <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-600 shadow-xl shadow-blue-900/50">
-            <ScalesIcon className="h-7 w-7 text-white" />
-          </div>
+          <img src="/qlegal-logo.png" alt="QLegal" className="h-14 w-14 rounded-2xl object-contain" />
           <div className="text-center">
             <h1 className="text-xl font-bold tracking-tight text-white">Quanby Case Management Platform</h1>
             <p className="mt-0.5 text-xs font-semibold uppercase tracking-widest text-blue-400">

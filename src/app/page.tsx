@@ -40,13 +40,11 @@ export default async function RootPage() {
       {/* ── Header ────────────────────────────────────────────────────────── */}
       <header className="relative z-10 flex items-center justify-between px-6 py-5 sm:px-10">
         <div className="flex items-center gap-3">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600 shadow-lg shadow-blue-900/50">
-            <ScalesIcon className="h-5 w-5 text-white" />
-          </div>
+          <img src="/qlegal-logo.png" alt="QLegal" className="h-9 w-9 rounded-lg object-contain" />
           <div className="flex flex-col">
             <span className="text-sm font-bold tracking-tight text-white">Quanby Legal</span>
             <span className="text-[10px] font-semibold uppercase tracking-widest text-blue-400">
-              Platform
+              Case Management
             </span>
           </div>
         </div>

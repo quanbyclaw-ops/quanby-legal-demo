@@ -86,16 +86,14 @@ export function Sidebar({ className, onClose, isMobile = false }: SidebarProps) 
           isCollapsed ? 'justify-center' : 'gap-3'
         )}
       >
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-600 shadow-lg shadow-blue-900/50">
-          <Scale className="h-5 w-5 text-white" aria-hidden="true" />
-        </div>
+        <img src="/qlegal-logo.png" alt="QLegal" className="h-9 w-9 shrink-0 rounded-lg object-contain" />
         {!isCollapsed && (
           <div className="flex min-w-0 flex-col">
             <span className="truncate text-sm font-bold tracking-tight text-white">
               Quanby Legal
             </span>
             <span className="truncate text-[10px] font-semibold uppercase tracking-widest text-blue-400">
-              Platform
+              Case Management
             </span>
           </div>
         )}
