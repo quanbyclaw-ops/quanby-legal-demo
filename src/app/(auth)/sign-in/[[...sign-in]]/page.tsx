@@ -166,14 +166,14 @@ export default function SignInPage() {
           {['SC e-Rules', 'RA 10173', 'NIST 800-53', 'ISO 27001'].map((s) => (
             <span
               key={s}
-              className="rounded-full border border-amber-500/30 bg-amber-500/10 px-2.5 py-1 text-[10px] font-semibold text-amber-500/80"
+              className="rounded-full border border-amber-400/60 bg-amber-400/20 px-2.5 py-1 text-[10px] font-semibold text-amber-300"
             >
               {s}
             </span>
           ))}
         </div>
 
-        <p className="mt-6 text-center text-xs text-slate-600">
+        <p className="mt-6 text-center text-xs text-white/60">
           © {new Date().getFullYear()} Quanby Case Management Platform
         </p>
       </div>
