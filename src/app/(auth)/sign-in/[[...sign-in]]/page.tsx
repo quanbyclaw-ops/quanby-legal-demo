@@ -152,10 +152,10 @@ export default function SignInPage() {
 
           {/* Footer note */}
           <div className="border-t border-white/10 px-6 py-4">
-            <p className="text-center text-xs text-slate-500">
+            <p className="text-center text-xs text-white/90 font-medium">
               Demo mode — no real credentials required.
             </p>
-            <p className="mt-1 text-center text-xs text-slate-600">
+            <p className="mt-1 text-center text-xs text-white/70">
               RA 10173-compliant authentication enforced in production.
             </p>
           </div>
