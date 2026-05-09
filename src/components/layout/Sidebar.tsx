@@ -40,18 +40,18 @@ interface NavItem {
 
 const NAV_ITEMS: NavItem[] = [
   { label: 'Dashboard',      href: '/dashboard',              icon: LayoutDashboard, section: 'main' },
-  { label: 'Cases',          href: '/dashboard/cases',        icon: Briefcase,       section: 'main' },
-  { label: 'Client Intake',  href: '/dashboard/intake',       icon: UserPlus,        section: 'main' },
-  { label: 'Contract Agent', href: '/dashboard/contracts',    icon: FileSearch,      section: 'main' },
-  { label: 'Documents',      href: '/dashboard/documents',    icon: FileText,        section: 'main' },
-  { label: 'Notarization',   href: '/dashboard/notarization', icon: Stamp,           section: 'main' },
-  { label: 'Analytics',      href: '/dashboard/analytics',    icon: BarChart3,       section: 'main' },
-  { label: 'Client Portal',  href: '/dashboard/portal',       icon: Users,           section: 'main' },
+  { label: 'Cases',          href: '/cases',        icon: Briefcase,       section: 'main' },
+  { label: 'Client Intake',  href: '/intake',       icon: UserPlus,        section: 'main' },
+  { label: 'Contract Agent', href: '/contracts',    icon: FileSearch,      section: 'main' },
+  { label: 'Documents',      href: '/documents',    icon: FileText,        section: 'main' },
+  { label: 'Notarization',   href: '/notarization', icon: Stamp,           section: 'main' },
+  { label: 'Analytics',      href: '/analytics',    icon: BarChart3,       section: 'main' },
+  { label: 'Client Portal',  href: '/portal',       icon: Users,           section: 'main' },
 ]
 
 const SECONDARY_ITEMS: NavItem[] = [
-  { label: 'Settings', href: '/dashboard/settings', icon: Settings,   section: 'secondary' },
-  { label: 'Help',     href: '/dashboard/help',     icon: HelpCircle, section: 'secondary' },
+  { label: 'Settings', href: '/settings', icon: Settings,   section: 'secondary' },
+  { label: 'Help',     href: '/help',     icon: HelpCircle, section: 'secondary' },
 ]
 
 // ─── Sidebar ───────────────────────────────────────────────────────────────────
