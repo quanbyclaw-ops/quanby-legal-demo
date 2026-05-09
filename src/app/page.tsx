@@ -155,7 +155,7 @@ export default async function RootPage() {
       </section>
 
       {/* ── Footer ────────────────────────────────────────────────────────── */}
-      <footer className="relative z-10 flex items-center justify-center border-t border-white/5 px-6 py-5 text-xs text-slate-500">
+      <footer className="relative z-10 flex items-center justify-center border-t border-white/5 px-6 py-5 text-xs text-white/70 font-medium">
         © {new Date().getFullYear()} Quanby Case Management Platform · Demo Environment ·
         All rights reserved
       </footer>
