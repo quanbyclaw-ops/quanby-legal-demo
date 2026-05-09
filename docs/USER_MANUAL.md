@@ -1,6 +1,6 @@
 # Quanby Case Management Platform — User Manual
 
-**Version:** 1.0 | **Classification:** Internal / Demo  
+**Version:** v1.0.0 Demo Build | **Classification:** Internal / Demo  
 **Applicable Laws:** RA 10173 (Data Privacy Act), RA 8792 (E-Commerce Act)  
 **Jurisdiction:** Republic of the Philippines
 
@@ -10,16 +10,17 @@
 
 1. [Getting Started](#1-getting-started)
 2. [Dashboard Overview](#2-dashboard-overview)
-3. [Client Intake](#3-client-intake)
-4. [Case Management](#4-case-management)
-5. [Document Management](#5-document-management)
-6. [e-Notarization](#6-e-notarization)
-7. [Contract Agent](#7-contract-agent)
-8. [Analytics & Reports](#8-analytics--reports)
-9. [Client Portal](#9-client-portal)
-10. [Notifications](#10-notifications)
-11. [Settings](#11-settings)
-12. [Frequently Asked Questions](#12-frequently-asked-questions)
+3. [Global Search](#3-global-search)
+4. [Client Intake](#4-client-intake)
+5. [Case Management](#5-case-management)
+6. [Document Management](#6-document-management)
+7. [e-Notarization](#7-e-notarization)
+8. [Contract Agent](#8-contract-agent)
+9. [Analytics & Reports](#9-analytics--reports)
+10. [Client Portal](#10-client-portal)
+11. [Notifications](#11-notifications)
+12. [Settings](#12-settings)
+13. [Frequently Asked Questions](#13-frequently-asked-questions)
 
 ---
 
@@ -91,7 +92,7 @@ The sidebar collapses to icon-only mode on tablet screens and becomes a slide-ou
 
 ### 2.2 KPI Summary Cards
 
-The top row displays six key performance indicators:
+The top row displays six key performance indicators with **animated counters** — values count up from zero on load, giving an immediate visual impression of firm activity:
 
 - **Active Cases** — Total cases with ACTIVE status
 - **Pending Intake** — Clients awaiting eligibility screening
@@ -99,6 +100,8 @@ The top row displays six key performance indicators:
 - **Overdue Deadlines** — Reglementary deadlines that have passed
 - **Documents for Review** — Documents in REVIEW status
 - **Win Rate (YTD)** — Percentage of closed cases decided favorably
+
+Each card is **clickable** and navigates directly to the relevant module (e.g., clicking Active Cases opens the filtered case list).
 
 ### 2.3 Case Table
 
@@ -127,7 +130,11 @@ Lists upcoming reglementary deadlines sorted by urgency. Color coding:
 - **Yellow** — 8–14 days remaining
 - **Gray** — More than 14 days remaining
 
-### 2.6 Supreme Court Compliance Badge
+### 2.6 Powered by Quanby AI
+
+A **"Powered by Quanby AI"** badge appears at the bottom of every dashboard page, along with the platform version (`v1.0.0 Demo`). This identifies the AI-assisted features (contract analysis, document generation, eligibility scoring) as Quanby-native capabilities.
+
+### 2.7 Supreme Court Compliance Badge
 
 Displayed in the top-right corner of the dashboard. Confirms the platform operates under:
 - A.M. No. 19-10-20-SC (Electronic Filing)
@@ -136,15 +143,49 @@ Displayed in the top-right corner of the dashboard. Confirms the platform operat
 
 ---
 
-## 3. Client Intake
+## 3. Global Search
+
+### 3.1 Overview
+
+The **Global Search** feature is accessible from the top navigation bar on all pages. Click the **magnifying glass icon** (🔍) to open the search bar, or click the search icon on mobile.
+
+### 3.2 How to Use Search
+
+1. Click the search icon in the top navigation bar
+2. Type your query — results appear **automatically** after a brief debounce (300 ms)
+3. Results are grouped into three categories:
+   - ⚖️ **Cases** — Matched case numbers, titles, or client names
+   - 📄 **Contracts** — Matched contract titles
+   - 📁 **Documents** — Matched document titles
+4. Hover over any result to see a **tooltip** with additional details (e.g., full case number and title)
+5. Click a result to navigate directly to that record
+6. Press **Escape** or click the **×** button to close the search bar
+
+### 3.3 Search Scope
+
+| Category | Searchable Fields |
+|----------|------------------|
+| Cases | Case number, case title, client name, opposing party |
+| Contracts | Contract title, parties |
+| Documents | Document title, document name |
+
+> **Note:** Search is performed live against the database. Results are limited to 5 items per category for performance. Use the dedicated **Cases**, **Contracts**, or **Documents** module for advanced filtering.
+
+### 3.4 Keyboard Shortcut
+
+Press **Escape** at any time to close the search bar without navigating away.
+
+---
+
+## 4. Client Intake
 
 The Intake module implements a structured 4-step wizard for onboarding new clients and assessing eligibility for legal aid (PAO eligibility screening).
 
-### 3.1 Starting a New Intake
+### 4.1 Starting a New Intake
 
 Navigate to **Client Intake** from the sidebar, then click **New Intake**.
 
-### 3.2 Step 1 — Personal Information
+### 4.2 Step 1 — Personal Information
 
 Required fields:
 - First Name, Last Name (Middle Name optional)
@@ -160,7 +201,7 @@ Address fields (for venue determination):
 Government IDs (optional but recommended for identity verification):
 - TIN, SSS, PhilHealth, Pag-IBIG, Voter's ID, Passport
 
-### 3.3 Step 2 — Case Information
+### 4.3 Step 2 — Case Information
 
 - **Case Type** — Select from: Civil, Criminal, Labor, Administrative, Family, Commercial, Special Proceedings, Election, Tax, Environmental
 - **Brief Description** — Narrative description of the legal problem
@@ -170,7 +211,7 @@ Government IDs (optional but recommended for identity verification):
 
 The system will automatically display applicable prescription periods based on case type.
 
-### 3.4 Step 3 — Eligibility Screening (PAO Criteria)
+### 4.4 Step 3 — Eligibility Screening (PAO Criteria)
 
 The platform computes a PAO eligibility score based on:
 
@@ -189,7 +230,7 @@ Eligibility results:
 - **Score 40–59** → Requires review by supervising attorney
 - **Score < 40** → Ineligible; may be referred to private counsel
 
-### 3.5 Step 4 — Review and Submit
+### 4.5 Step 4 — Review and Submit
 
 Review all entered information before submission. The system will:
 1. Create a Client record in the database
@@ -201,9 +242,9 @@ After submission, you are redirected to the Case Detail page for the newly creat
 
 ---
 
-## 4. Case Management
+## 5. Case Management
 
-### 4.1 Case List
+### 5.1 Case List
 
 **Cases** → Lists all cases with filtering, sorting, and search.
 
@@ -218,7 +259,7 @@ After submission, you are redirected to the Case Detail page for the newly creat
 
 **Search:** Full-text search across case number, title, client name, opposing party.
 
-### 4.2 Creating a New Case
+### 5.2 Creating a New Case
 
 **Cases** → **New Case** button (or from Intake completion).
 
@@ -234,7 +275,7 @@ Optional but recommended:
 - Date of Filing
 - Reglementary Deadline
 
-### 4.3 Case Detail — 5-Tab View
+### 5.3 Case Detail — 5-Tab View
 
 Click any case to open the detail view with five tabs:
 
@@ -281,7 +322,7 @@ Task management for case to-dos:
 - View lawyer's current caseload
 - Assignment history
 
-### 4.4 Philippine Legal Terminology
+### 5.4 Philippine Legal Terminology
 
 The platform uses correct Philippine legal terminology throughout:
 - **Reglementary Period** — Prescribed time to file pleadings (not "statute of limitations")
@@ -293,13 +334,13 @@ The platform uses correct Philippine legal terminology throughout:
 
 ---
 
-## 5. Document Management
+## 6. Document Management
 
-### 5.1 Document List
+### 6.1 Document List
 
 **Documents** → Lists all firm documents with filtering by type, status, case, and date.
 
-### 5.2 Uploading Documents
+### 6.2 Uploading Documents
 
 Click **Upload Document**:
 1. Select file (PDF, DOCX, DOC supported; max 10MB)
@@ -308,7 +349,7 @@ Click **Upload Document**:
 4. Link to a case (optional)
 5. Click Upload
 
-### 5.3 Document Templates
+### 6.3 Document Templates
 
 The platform includes 12 pre-built Philippine legal document templates:
 
@@ -327,7 +368,7 @@ The platform includes 12 pre-built Philippine legal document templates:
 | Special Power of Attorney | Authorization | Civil, Commercial |
 | Affidavit-Complaint | Affidavit | Criminal |
 
-### 5.4 Generating a Document from Template
+### 6.4 Generating a Document from Template
 
 1. Click **Generate Document** (from Documents or Case Detail → Documents tab)
 2. Select a template from the list
@@ -336,7 +377,7 @@ The platform includes 12 pre-built Philippine legal document templates:
 5. Click **Generate PDF** — downloads a print-ready PDF
 6. The generated document is automatically saved and linked to the case
 
-### 5.5 Document Status Workflow
+### 6.5 Document Status Workflow
 
 `DRAFT → REVIEW → APPROVED → FILED → SERVED → ARCHIVED`
 
@@ -344,15 +385,15 @@ Update status from the document detail page or case documents tab.
 
 ---
 
-## 6. e-Notarization
+## 7. e-Notarization
 
-### 6.1 Overview
+### 7.1 Overview
 
 The e-Notarization module implements a 4-step electronic notarization workflow compliant with:
 - **RA 8792** — Electronic Commerce Act
 - **A.M. No. 19-10-20-SC** — Supreme Court Rules on Electronic Notarization
 
-### 6.2 Step 1 — Document Selection
+### 7.2 Step 1 — Document Selection
 
 Select the document to be notarized:
 - Choose from existing documents in the system
@@ -361,7 +402,7 @@ Select the document to be notarized:
 
 Verify that the document is complete and in final form before proceeding.
 
-### 6.3 Step 2 — Identity Verification
+### 7.3 Step 2 — Identity Verification
 
 The signatory must complete identity verification:
 - **Government ID verification** — Upload a valid government-issued ID (PhilSys, Passport, Driver's License, Voter's ID)
@@ -370,7 +411,7 @@ The signatory must complete identity verification:
 
 In demo mode, identity verification is simulated. In production, integrate with PhilSys eKYC API.
 
-### 6.4 Step 3 — Notarial Act
+### 7.4 Step 3 — Notarial Act
 
 The commissioned Notary Public:
 - Reviews the document and signatory identity
@@ -382,18 +423,18 @@ The commissioned Notary Public:
 - Applies digital seal (cryptographic signature)
 - Records the act in the Notarial Register
 
-### 6.5 Step 4 — Certificate of Notarization
+### 7.5 Step 4 — Certificate of Notarization
 
 Upon successful notarization:
 - **Certificate Number** is generated (format: `NOT-YYYY-XXXXXXXX`)
 - **Digital seal** is embedded in the document
-- **Verification QR code** is appended to the last page
+- **Verification QR code** is appended to the last page — scan with any QR reader to reach the verification portal
 - **SHA-256 integrity hash** is recorded for tamper detection
 - Certificate is available for download (PDF format)
 
-The notarized document status is updated to `NOTARIZED` in the system.
+The QR code displayed on the certificate links to the platform's verification URL for that certificate number, enabling any third party to confirm authenticity without contacting the firm.
 
-### 6.6 Verification
+### 7.6 Verification
 
 Any party can verify a notarized document:
 - Scan the QR code on the document, or
@@ -401,11 +442,11 @@ Any party can verify a notarized document:
 
 ---
 
-## 7. Contract Agent
+## 8. Contract Agent
 
 The Contract Agent is an AI-powered module for uploading, analyzing, and managing contracts under Philippine law.
 
-### 7.1 Contract List
+### 8.1 Contract List
 
 **Contract Agent** → Lists all uploaded contracts with:
 - Title, type, parties
@@ -413,7 +454,7 @@ The Contract Agent is an AI-powered module for uploading, analyzing, and managin
 - Status (Uploaded, Analyzing, Analyzed, Under Review, Signed, etc.)
 - Upload date
 
-### 7.2 Uploading a Contract
+### 8.2 Uploading a Contract
 
 Click **Upload Contract** (or **New Contract**):
 1. Drag and drop or select the contract file (PDF or DOCX, max 20MB)
@@ -426,12 +467,12 @@ Click **Upload Contract** (or **New Contract**):
 
 The system will trigger automatic AI analysis. Status changes to `ANALYZING` then `ANALYZED`.
 
-### 7.3 AI Analysis Results
+### 8.3 AI Analysis Results
 
 The analysis page for each contract displays:
 
 #### Risk Gauge
-Visual semicircular gauge showing the overall risk score (0–100):
+Visual circular gauge showing the overall risk score (0–100). The gauge **animates** on load — the arc sweeps from zero to the final score over 1 second, making the risk level immediately apparent:
 - **0–30** Green — Low Risk
 - **31–60** Yellow — Medium Risk
 - **61–80** Orange — High Risk
@@ -467,7 +508,7 @@ Actionable recommendations to improve the contract, ranked by priority.
 #### SC Compliance Badge
 Indicates whether the contract structure complies with Supreme Court e-document standards.
 
-### 7.4 Contract Chat (AI Agent)
+### 8.4 Contract Chat (AI Agent)
 
 Each analyzed contract has a chat interface for natural language queries:
 
@@ -486,7 +527,7 @@ To use:
 3. Type your question and press Enter
 4. View the AI response with relevant clause citations
 
-### 7.5 Contract Templates
+### 8.5 Contract Templates
 
 **Contract Agent** → **Templates** tab → Browse and generate from pre-built templates:
 
@@ -506,19 +547,19 @@ To generate:
 3. Preview the rendered contract
 4. Download as PDF or save to the contract library
 
-### 7.6 Linking Contracts to Cases
+### 8.6 Linking Contracts to Cases
 
 From the contract detail page, click **Link to Case** to associate a contract with a specific legal case. This makes the contract accessible from the Case Detail → Documents tab.
 
 ---
 
-## 8. Analytics & Reports
+## 9. Analytics & Reports
 
-### 8.1 Overview
+### 9.1 Overview
 
 **Analytics** → Displays firm-wide performance metrics with interactive charts.
 
-### 8.2 KPI Cards
+### 9.2 KPI Cards
 
 | Metric | Description |
 |--------|-------------|
@@ -529,7 +570,7 @@ From the contract detail page, click **Link to Case** to associate a contract wi
 | Documents Filed | Total documents filed with courts |
 | Contracts Reviewed | Contracts analyzed by the Contract Agent |
 
-### 8.3 Charts
+### 9.3 Charts
 
 **Case Volume by Month** (Bar Chart)
 - Monthly breakdown of new cases filed
@@ -547,30 +588,41 @@ From the contract detail page, click **Link to Case** to associate a contract wi
 **Revenue/Billing Trend** (Line Chart)
 - Monthly billing data (if billing module is enabled)
 
-### 8.4 Filtering
+### 9.4 Filtering
 
 All charts respond to global filters:
 - Date range (custom or preset: This Month, Last Quarter, This Year)
 - Lawyer filter
 - Case type filter
 
-### 8.5 Exporting Reports
+### 9.5 Exporting Reports
 
 Click **Export** on any chart to download:
 - PNG image for presentations
 - CSV data for further analysis
 
+### 9.6 Print / PDF Export
+
+The Analytics page includes **print-optimized CSS**. To export the full analytics view as a PDF:
+
+1. Open the Analytics page
+2. Press **Ctrl+P** (Windows/Linux) or **Cmd+P** (macOS)
+3. In the print dialog, select **Save as PDF** as the destination
+4. Click **Save**
+
+The print stylesheet hides navigation elements and formats charts for clean A4 output.
+
 ---
 
-## 9. Client Portal
+## 10. Client Portal
 
-### 9.1 Overview
+### 10.1 Overview
 
 The Client Portal provides a dedicated view for clients to monitor their active cases without access to the full attorney-side interface.
 
 Access this view by logging in with the **Pedro Garcia (Client)** demo account, or navigate to **Client Portal** in the sidebar.
 
-### 9.2 Client Dashboard
+### 10.2 Client Dashboard
 
 Displays for the logged-in client:
 - **Active Cases** — List of all cases where the client is the principal party
@@ -579,7 +631,7 @@ Displays for the logged-in client:
 - **Documents** — Documents filed in the client's case (view/download only)
 - **Messages** — Communication thread with assigned lawyer
 
-### 9.3 Case Cards
+### 10.3 Case Cards
 
 Each case card shows:
 - Case title and case number
@@ -588,11 +640,11 @@ Each case card shows:
 - Next hearing date
 - Recent timeline update
 
-### 9.4 Document Access
+### 10.4 Document Access
 
 Clients can view documents in the `FILED` or `SERVED` status. Draft and internal documents are not visible to clients.
 
-### 9.5 Privacy
+### 10.5 Privacy
 
 Client data is governed by RA 10173. The platform implements:
 - Role-based access control (clients cannot see other clients' data)
@@ -601,13 +653,13 @@ Client data is governed by RA 10173. The platform implements:
 
 ---
 
-## 10. Notifications
+## 11. Notifications
 
-### 10.1 Notification Center
+### 11.1 Notification Center
 
 Click the **bell icon** in the top navigation bar to open the Notification Panel.
 
-### 10.2 Notification Types
+### 11.2 Notification Types
 
 | Type | Trigger |
 |------|---------|
@@ -622,7 +674,7 @@ Click the **bell icon** in the top navigation bar to open the Notification Panel
 | Task Due | A task assigned to you is due |
 | System Alert | Platform maintenance or security alerts |
 
-### 10.3 Managing Notifications
+### 11.3 Managing Notifications
 
 - **Mark as Read** — Click a notification or the "Mark read" action
 - **Mark All Read** — Clear all unread indicators at once
@@ -631,26 +683,27 @@ Click the **bell icon** in the top navigation bar to open the Notification Panel
 
 ---
 
-## 11. Settings
+## 12. Settings
 
-### 11.1 User Profile
+### 12.1 User Profile
 
 Update display name, email address, and profile photo.
 
 For lawyers: Update Bar Admission Number and specializations.
 
-### 11.2 Notification Preferences
+### 12.2 Notification Preferences
 
 Configure which notifications to receive and through which channels (in-app, email — email requires SMTP configuration in production).
 
-### 11.3 Theme Preference
+### 12.3 Theme Preference
 
-Toggle between:
+Click the **sun/moon icon** in the top navigation bar to toggle between:
 - **Light Mode** — Default white/slate theme
-- **Dark Mode** — Dark navy theme
-- **System** — Follows OS preference
+- **Dark Mode** — Dark navy/slate theme
 
-### 11.4 Demo Account Switcher
+> **Note:** The System theme option (which previously followed OS preference) has been removed. The platform now supports Light and Dark modes only.
+
+### 12.4 Demo Account Switcher
 
 Switch the active demo account without logging out. Available accounts:
 - Atty. Maria Santos (Admin)
@@ -658,17 +711,17 @@ Switch the active demo account without logging out. Available accounts:
 - Ana Reyes (Paralegal)
 - Pedro Garcia (Client)
 
-### 11.5 System Information
+### 12.5 System Information
 
 Displays:
-- Platform version
+- Platform version: **v1.0.0 Demo Build**
 - Database status
 - Environment (development / production)
 - Compliance certifications in effect
 
 ---
 
-## 12. Frequently Asked Questions
+## 13. Frequently Asked Questions
 
 **Q: Is the platform compliant with the Data Privacy Act (RA 10173)?**  
 A: Yes. The platform is designed with RA 10173 compliance as a baseline requirement. Data minimization, consent management, access controls, and audit logging are built in. For production deployment, a full Privacy Impact Assessment (PIA) must be conducted and a Privacy Management Program established.
@@ -691,6 +744,12 @@ A: The web application is mobile-responsive and functions on smartphones and tab
 **Q: How do I reset the demo data?**  
 A: Run `npm run db:reset` followed by `npm run db:seed` to restore the database to its initial demo state.
 
+**Q: How do I switch between Light and Dark mode?**  
+A: Click the sun/moon icon in the top navigation bar. The platform supports Light and Dark modes. Your preference is stored locally in the browser.
+
+**Q: Can I export the analytics as a PDF?**  
+A: Yes. Open the Analytics page and press Ctrl+P (or Cmd+P on macOS). Select "Save as PDF" in the print dialog. The page is formatted with print-optimized CSS for clean output.
+
 ---
 
-*This document is maintained by the Quanby Case Management Platform engineering team. For support, contact: support@quanbylegal.com*
+*This document is maintained by the Quanby Case Management Platform engineering team. Version: v1.0.0 Demo Build. For support, contact: support@quanbylegal.com*

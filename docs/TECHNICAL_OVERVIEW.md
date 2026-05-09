@@ -519,3 +519,40 @@ quanby-legal-demo/
 
 *Maintained by: Quanby Case Management Platform Engineering Team*  
 *Classification: Internal Technical Documentation*
+
+## Recent Enhancements (v1.0.0 Demo Build)
+
+### Animated Dashboard Counters
+- Component: `src/components/ui/animated-counter.tsx`
+- Uses `requestAnimationFrame` with ease-out cubic easing
+- Counts from 0 to target value over 1 second on mount
+- Wrapped in `src/components/dashboard/StatCards.tsx` (client component)
+
+### Global Search
+- Debounced search (300ms) in TopNav search bar
+- Queries three API endpoints in parallel: `/api/cases?search=`, `/api/contracts?search=`, `/api/documents?search=`
+- Results grouped by type with hover tooltips showing full titles
+- Keyboard support: Escape to close
+
+### Risk Gauge Animation
+- SVG `stroke-dashoffset` transition on mount (1 second, cubic-bezier)
+- Component: `src/components/contracts/RiskGauge.tsx`
+
+### QR Code on Notarization Certificates
+- Decorative SVG QR pattern component: `src/components/documents/QRCode.tsx`
+- Renders verification URL as visual QR pattern on certificate
+
+### Print/PDF Export (Analytics)
+- `@media print` CSS block in `globals.css`
+- Hides sidebar, navigation, buttons
+- Formats content for A4 paper with proper margins
+- Triggered via `window.print()` / Ctrl+P
+
+### Dark Mode Support
+- Light/Dark toggle (System mode removed for simplicity)
+- All dashboard stat cards have `dark:` Tailwind variants
+- Theme persisted in localStorage via `next-themes`
+
+### Branding
+- "Powered by Quanby AI" badge in dashboard footer
+- Links to https://quanbyai.com
