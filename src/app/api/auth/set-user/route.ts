@@ -35,3 +35,15 @@ export async function POST(request: NextRequest) {
     )
   }
 }
+
+export async function DELETE() {
+  const response = NextResponse.json({ success: true })
+  response.cookies.set(MOCK_USER_COOKIE, '', {
+    httpOnly: true,
+    sameSite: 'lax',
+    path: '/',
+    maxAge: 0,
+    secure: process.env.NODE_ENV === 'production',
+  })
+  return response
+}
