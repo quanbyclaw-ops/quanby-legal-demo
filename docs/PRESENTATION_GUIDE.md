@@ -1,4 +1,4 @@
-# Quanby Legal Platform — Presentation Guide
+# Quanby Case Management Platform — Presentation Guide
 
 **Audience:** Law firm principals, managing partners, legal technology evaluators  
 **Duration:** 30–45 minutes (full demo) | 15 minutes (executive summary)  
@@ -336,5 +336,5 @@ Reference these specific SC issuances when the question of compliance arises:
 
 ---
 
-*Presentation guide maintained by: Quanby Legal Platform Team*  
+*Presentation guide maintained by: Quanby Case Management Platform Team*  
 *Last updated: May 2026*

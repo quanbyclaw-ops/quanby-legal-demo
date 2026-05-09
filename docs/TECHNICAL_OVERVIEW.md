@@ -1,4 +1,4 @@
-# Quanby Legal Platform — Technical Overview
+# Quanby Case Management Platform — Technical Overview
 
 **Version:** 1.0 | **Classification:** Internal / Technical  
 **Standards:** NIST SP 800-53 Rev. 5, ISO/IEC 27001:2022, OWASP Top 10  
@@ -517,5 +517,5 @@ quanby-legal-demo/
 
 ---
 
-*Maintained by: Quanby Legal Platform Engineering Team*  
+*Maintained by: Quanby Case Management Platform Engineering Team*  
 *Classification: Internal Technical Documentation*

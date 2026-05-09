@@ -1,4 +1,4 @@
-# Quanby Legal Platform — User Manual
+# Quanby Case Management Platform — User Manual
 
 **Version:** 1.0 | **Classification:** Internal / Demo  
 **Applicable Laws:** RA 10173 (Data Privacy Act), RA 8792 (E-Commerce Act)  
@@ -693,4 +693,4 @@ A: Run `npm run db:reset` followed by `npm run db:seed` to restore the database 
 
 ---
 
-*This document is maintained by the Quanby Legal Platform engineering team. For support, contact: support@quanbylegal.com*
+*This document is maintained by the Quanby Case Management Platform engineering team. For support, contact: support@quanbylegal.com*
