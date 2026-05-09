@@ -4,7 +4,7 @@
 
 import * as React from 'react'
 import { useTheme } from 'next-themes'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import {
   Bell,
   Search,
@@ -95,176 +95,6 @@ function useBreadcrumbs() {
   }))
 }
 
-// ─── Search types ────────────────────────────────────────────────────────────
-
-interface SearchResult {
-  id: string
-  label: string
-  sub: string
-  href: string
-  icon: string
-}
-
-// ─── Search hook ──────────────────────────────────────────────────────────────
-
-function useSearch(query: string, enabled: boolean) {
-  const [results, setResults] = React.useState<SearchResult[]>([])
-  const [loading, setLoading] = React.useState(false)
-
-  React.useEffect(() => {
-    if (!enabled || !query.trim() || query.length < 2) {
-      setResults([])
-      return
-    }
-
-    let cancelled = false
-    setLoading(true)
-
-    const fetchAll = async () => {
-      try {
-        const [casesRes, contractsRes, docsRes] = await Promise.allSettled([
-          fetch(`/api/cases?search=${encodeURIComponent(query)}&pageSize=5`),
-          fetch(`/api/contracts?search=${encodeURIComponent(query)}&pageSize=5`),
-          fetch(`/api/documents?search=${encodeURIComponent(query)}&pageSize=5`),
-        ])
-
-        if (cancelled) return
-
-        const combined: SearchResult[] = []
-
-        if (casesRes.status === 'fulfilled' && casesRes.value.ok) {
-          const json = await casesRes.value.json()
-          const cases = json.data ?? json.cases ?? []
-          for (const c of cases.slice(0, 5)) {
-            combined.push({
-              id: `case-${c.id}`,
-              label: c.title ?? c.caseNumber,
-              sub: c.caseNumber ?? 'Case',
-              href: `/cases/${c.id}`,
-              icon: '⚖️',
-            })
-          }
-        }
-
-        if (contractsRes.status === 'fulfilled' && contractsRes.value.ok) {
-          const json = await contractsRes.value.json()
-          const contracts = json.data ?? json.contracts ?? []
-          for (const c of contracts.slice(0, 5)) {
-            combined.push({
-              id: `contract-${c.id}`,
-              label: c.title,
-              sub: `Contract · ${c.type ?? ''}`,
-              href: `/contracts/${c.id}`,
-              icon: '📄',
-            })
-          }
-        }
-
-        if (docsRes.status === 'fulfilled' && docsRes.value.ok) {
-          const json = await docsRes.value.json()
-          const docs = json.data ?? json.documents ?? []
-          for (const d of docs.slice(0, 5)) {
-            combined.push({
-              id: `doc-${d.id}`,
-              label: d.title ?? d.name,
-              sub: `Document · ${d.type ?? ''}`,
-              href: `/documents`,
-              icon: '📝',
-            })
-          }
-        }
-
-        setResults(combined)
-      } catch {
-        setResults([])
-      } finally {
-        if (!cancelled) setLoading(false)
-      }
-    }
-
-    fetchAll()
-    return () => { cancelled = true }
-  }, [query, enabled])
-
-  return { results, loading }
-}
-
-// ─── Search box with dropdown ─────────────────────────────────────────────────
-
-function SearchBox({ onClose }: { onClose: () => void }) {
-  const router = useRouter()
-  const [query, setQuery] = React.useState('')
-  const [debouncedQuery, setDebouncedQuery] = React.useState('')
-  const inputRef = React.useRef<HTMLInputElement>(null)
-
-  // Debounce 300ms
-  React.useEffect(() => {
-    const t = setTimeout(() => setDebouncedQuery(query), 300)
-    return () => clearTimeout(t)
-  }, [query])
-
-  const { results, loading } = useSearch(debouncedQuery, true)
-  const showDropdown = debouncedQuery.length >= 2
-
-  const handleSelect = (href: string) => {
-    router.push(href)
-    onClose()
-    setQuery('')
-  }
-
-  return (
-    <div className="relative flex-1">
-      <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" aria-hidden="true" />
-      <input
-        ref={inputRef}
-        type="search"
-        autoFocus
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search cases, contracts, documents…"
-        className="h-9 w-full rounded-md border border-input bg-slate-50 pl-9 pr-4 text-sm outline-none ring-offset-background placeholder:text-muted-foreground focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 dark:bg-slate-800"
-        aria-label="Global search"
-        onKeyDown={(e) => {
-          if (e.key === 'Escape') { onClose(); setQuery('') }
-        }}
-      />
-      {/* Dropdown */}
-      {showDropdown && (
-        <div className="absolute left-0 top-full z-50 mt-1.5 w-full min-w-[340px] rounded-xl border border-gray-200 bg-white shadow-xl dark:border-slate-700 dark:bg-slate-900 overflow-hidden">
-          {loading ? (
-            <div className="px-4 py-3 text-sm text-gray-400 flex items-center gap-2">
-              <span className="h-3 w-3 rounded-full border-2 border-blue-500 border-t-transparent animate-spin" />
-              Searching...
-            </div>
-          ) : results.length === 0 ? (
-            <div className="px-4 py-6 text-center">
-              <p className="text-sm text-gray-400">No results for &ldquo;{debouncedQuery}&rdquo;</p>
-            </div>
-          ) : (
-            <ul className="py-1">
-              {results.map((r) => (
-                <li key={r.id}>
-                  <button
-                    type="button"
-                    onClick={() => handleSelect(r.href)}
-                    className="flex w-full items-center gap-3 px-4 py-2.5 text-left hover:bg-blue-50 dark:hover:bg-slate-800 transition-colors"
-                  >
-                    <span className="text-base flex-shrink-0">{r.icon}</span>
-                    <div className="min-w-0">
-                      <p className="text-sm font-medium text-slate-900 dark:text-slate-100 truncate">{r.label}</p>
-                      <p className="text-xs text-slate-500 dark:text-slate-400">{r.sub}</p>
-                    </div>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      )}
-    </div>
-  )
-}
-
 // ─── TopNav component ─────────────────────────────────────────────────────────
 
 interface TopNavProps {
@@ -340,7 +170,16 @@ export function TopNav({ onMenuClick, currentUser, className }: TopNavProps) {
       {/* ── Expandable search (desktop) ─────────────────────────────────────── */}
       {searchOpen ? (
         <div className="flex flex-1 items-center gap-2">
-          <SearchBox onClose={() => setSearchOpen(false)} />
+          <div className="relative flex-1">
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" aria-hidden="true" />
+            <input
+              type="search"
+              autoFocus
+              placeholder="Search cases, clients, documents…"
+              className="h-9 w-full rounded-md border border-input bg-slate-50 pl-9 pr-4 text-sm outline-none ring-offset-background placeholder:text-muted-foreground focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 dark:bg-slate-800"
+              aria-label="Global search"
+            />
+          </div>
           <Button
             variant="ghost"
             size="icon"

@@ -220,15 +220,11 @@ export default function AnalyticsPage() {
           </div>
 
           {/* Export buttons */}
-          <Button variant="outline" size="sm" className="gap-1.5 print:hidden">
+          <Button variant="outline" size="sm" className="gap-1.5">
             <Download className="h-3.5 w-3.5" />
             Export CSV
           </Button>
-          <Button
-            size="sm"
-            className="gap-1.5 bg-blue-600 hover:bg-blue-700 text-white print:hidden"
-            onClick={() => window.print()}
-          >
+          <Button size="sm" className="gap-1.5 bg-blue-600 hover:bg-blue-700 text-white">
             <Download className="h-3.5 w-3.5" />
             Export PDF
           </Button>

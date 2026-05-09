@@ -30,33 +30,18 @@ const SUGGESTED_QUESTIONS = [
   'Explain the termination clause',
 ]
 
-function ThinkingIndicator() {
+function TypingIndicator() {
   return (
     <div className="flex items-end gap-3 max-w-[80%]">
       <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy-950 text-white text-xs font-bold">
         AI
       </div>
       <div className="rounded-2xl rounded-bl-sm bg-gray-100 border border-gray-200 px-4 py-3">
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1">
           <span className="h-2 w-2 rounded-full bg-gray-400 animate-bounce [animation-delay:-0.3s]" />
           <span className="h-2 w-2 rounded-full bg-gray-400 animate-bounce [animation-delay:-0.15s]" />
           <span className="h-2 w-2 rounded-full bg-gray-400 animate-bounce" />
-          <span className="ml-1 text-xs text-gray-500 italic">Thinking...</span>
         </div>
-      </div>
-    </div>
-  )
-}
-
-function StreamingMessage({ content }: { content: string }) {
-  return (
-    <div className="flex items-end gap-3 max-w-[85%]">
-      <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy-950 text-white text-xs font-bold">
-        AI
-      </div>
-      <div className="rounded-2xl rounded-bl-sm bg-white border border-gray-200 px-4 py-3 text-sm leading-relaxed text-gray-800">
-        <span>{content}</span>
-        <span className="inline-block w-0.5 h-4 bg-blue-600 ml-0.5 animate-pulse align-text-bottom" />
       </div>
     </div>
   )
@@ -97,15 +82,13 @@ export function ContractChat({ contractId, contractTitle, initialMessages = [], 
     }
   ])
   const [input, setInput] = useState('')
-  const [isThinking, setIsThinking] = useState(false)
-  const [streamingContent, setStreamingContent] = useState<string | null>(null)
-  const isTyping = isThinking || streamingContent !== null
+  const [isTyping, setIsTyping] = useState(false)
   const bottomRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLTextAreaElement>(null)
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [messages, isThinking, streamingContent])
+  }, [messages, isTyping])
 
   const sendMessage = useCallback(async (text: string) => {
     const trimmed = text.trim()
@@ -119,31 +102,17 @@ export function ContractChat({ contractId, contractTitle, initialMessages = [], 
     }
     setMessages(prev => [...prev, userMsg])
     setInput('')
-    setIsThinking(true)
+    setIsTyping(true)
 
     try {
       let response: string
-
-      // Show thinking dots first
       if (onSendMessage) {
         response = await onSendMessage(trimmed)
       } else {
-        // Mock: simulate thinking delay 1–2s
-        await new Promise(r => setTimeout(r, 1200 + Math.random() * 800))
+        // Mock: simulate 1.5s delay
+        await new Promise(r => setTimeout(r, 1500 + Math.random() * 1000))
         response = generateMockResponse(trimmed)
       }
-      setIsThinking(false)
-
-      // Stream word-by-word with 30ms delay
-      const words = response.split(' ')
-      let streamed = ''
-      setStreamingContent('')
-      for (const word of words) {
-        streamed += (streamed ? ' ' : '') + word
-        setStreamingContent(streamed)
-        await new Promise(r => setTimeout(r, 30))
-      }
-      setStreamingContent(null)
 
       const assistantMsg: ChatMessage = {
         id: (Date.now() + 1).toString(),
@@ -153,10 +122,9 @@ export function ContractChat({ contractId, contractTitle, initialMessages = [], 
       }
       setMessages(prev => [...prev, assistantMsg])
     } finally {
-      setIsThinking(false)
-      setStreamingContent(null)
+      setIsTyping(false)
     }
-  }, [isThinking, streamingContent, onSendMessage])
+  }, [isTyping, onSendMessage])
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -230,8 +198,7 @@ export function ContractChat({ contractId, contractTitle, initialMessages = [], 
             </div>
           </div>
         ))}
-        {isThinking && <ThinkingIndicator />}
-        {streamingContent !== null && <StreamingMessage content={streamingContent} />}
+        {isTyping && <TypingIndicator />}
         <div ref={bottomRef} />
       </div>
 

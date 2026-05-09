@@ -86,7 +86,7 @@ export function Sidebar({ className, onClose, isMobile = false }: SidebarProps) 
           isCollapsed ? 'justify-center' : 'gap-3'
         )}
       >
-        <img src="/qlegal-logo.png" alt="QLegal" className="shrink-0 rounded-lg object-contain" style={{ height: '36px', width: '36px', maxHeight: '36px', maxWidth: '36px' }} />
+        <img src="/qlegal-logo.png" alt="QLegal" className="h-9 w-9 shrink-0 rounded-lg object-contain" />
         {!isCollapsed && (
           <div className="flex min-w-0 flex-col">
             <span className="truncate text-sm font-bold tracking-tight text-white">

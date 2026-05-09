@@ -7,7 +7,6 @@ import * as React from 'react'
 import { useRouter } from 'next/navigation'
 import { DEMO_USERS, type MockUser } from '@/lib/auth-client'
 import { cn } from '@/lib/utils'
-import { toast } from 'sonner'
 
 // ─── Role badge colors ─────────────────────────────────────────────────────────
 
@@ -36,9 +35,6 @@ export default function SignInPage() {
         body: JSON.stringify({ userId: user.id }),
       })
       if (!res.ok) throw new Error('Failed to authenticate')
-      toast.success(`Welcome, ${user.firstName}!`, {
-        description: `Signed in as ${user.name} · ${user.role}`,
-      })
       router.push('/dashboard')
       router.refresh()
     } catch {
@@ -67,7 +63,7 @@ export default function SignInPage() {
       <div className="relative z-10 w-full max-w-md">
         {/* Logo */}
         <div className="mb-8 flex flex-col items-center gap-3">
-          <img src="/qlegal-logo.png" alt="QLegal" className="rounded-2xl object-contain" style={{ height: '56px', width: '56px', maxHeight: '56px', maxWidth: '56px' }} />
+          <img src="/qlegal-logo.png" alt="QLegal" className="h-14 w-14 rounded-2xl object-contain" />
           <div className="text-center">
             <h1 className="text-xl font-bold tracking-tight text-white">Quanby Case Management Platform</h1>
             <p className="mt-0.5 text-xs font-semibold uppercase tracking-widest text-blue-400">

@@ -8,7 +8,6 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Badge } from '@/components/ui/badge'
-import { SkeletonTableRow } from '@/components/ui/skeleton'
 import { ComplianceBadge } from '@/components/layout/ComplianceBadge'
 import { CASE_TYPES, CASE_STATUSES, CASE_PRIORITIES } from '@/lib/constants'
 import type { CaseType, CasePriority } from '@/types'
@@ -281,28 +280,9 @@ export default function CasesPage() {
       {/* Table */}
       <div className="bg-white rounded-xl border border-gray-100 overflow-hidden">
         {loading ? (
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-gray-50 border-b border-gray-100 text-xs text-gray-500 uppercase tracking-wider">
-                  <th className="px-4 py-3 w-8" />
-                  <th className="text-left px-4 py-3">Case #</th>
-                  <th className="text-left px-4 py-3">Title</th>
-                  <th className="text-left px-4 py-3">Client</th>
-                  <th className="text-left px-4 py-3">Type</th>
-                  <th className="text-left px-4 py-3">Status</th>
-                  <th className="text-left px-4 py-3">Priority</th>
-                  <th className="text-left px-4 py-3">Lawyer</th>
-                  <th className="text-left px-4 py-3">Deadline</th>
-                  <th className="text-left px-4 py-3">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {Array.from({ length: 8 }).map((_, i) => (
-                  <SkeletonTableRow key={i} cols={10} />
-                ))}
-              </tbody>
-            </table>
+          <div className="py-16 text-center text-gray-400">
+            <div className="text-3xl mb-2">⚖️</div>
+            <p className="text-sm">Loading cases...</p>
           </div>
         ) : cases.length === 0 ? (
           <div className="py-16 text-center text-gray-400">

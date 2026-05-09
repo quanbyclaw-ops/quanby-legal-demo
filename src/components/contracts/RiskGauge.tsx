@@ -1,9 +1,8 @@
 'use client'
 
 // Quanby Case Management Platform – Risk Gauge Component
-// Circular SVG gauge displaying contract risk scores with mount animation
+// Circular SVG gauge displaying contract risk scores
 
-import { useEffect, useState } from 'react'
 import { cn } from '@/lib/utils'
 
 interface RiskGaugeProps {
@@ -34,24 +33,9 @@ export function RiskGauge({ score, size = 'md', className, showLabel = true, ani
   const radius = (cfg.dim - cfg.stroke) / 2
   const circumference = 2 * Math.PI * radius
   const clampedScore = Math.max(0, Math.min(100, score))
-  const targetOffset = circumference - (clampedScore / 100) * circumference
+  const offset = circumference - (clampedScore / 100) * circumference
   const cx = cfg.dim / 2
   const cy = cfg.dim / 2
-
-  // Animate from full offset (empty) to target offset on mount
-  const [currentOffset, setCurrentOffset] = useState(circumference)
-  useEffect(() => {
-    if (!animated) {
-      setCurrentOffset(targetOffset)
-      return
-    }
-    // Defer to next frame so the initial state renders first, enabling CSS transition
-    const raf = requestAnimationFrame(() => {
-      setCurrentOffset(targetOffset)
-    })
-    return () => cancelAnimationFrame(raf)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [score])
 
   return (
     <div className={cn('flex flex-col items-center gap-2', className)}>
@@ -66,7 +50,7 @@ export function RiskGauge({ score, size = 'md', className, showLabel = true, ani
             stroke="#e5e7eb"
             strokeWidth={cfg.stroke}
           />
-          {/* Score arc – animates from 0 to target over 1.5s */}
+          {/* Score arc */}
           <circle
             cx={cx}
             cy={cy}
@@ -76,8 +60,8 @@ export function RiskGauge({ score, size = 'md', className, showLabel = true, ani
             strokeWidth={cfg.stroke}
             strokeLinecap="round"
             strokeDasharray={circumference}
-            strokeDashoffset={currentOffset}
-            style={animated ? { transition: 'stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1)' } : undefined}
+            strokeDashoffset={offset}
+            className={animated ? 'transition-all duration-1000 ease-out' : ''}
           />
           {/* Center text – needs counter-rotation */}
           <text
