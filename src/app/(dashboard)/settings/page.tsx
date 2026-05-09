@@ -550,7 +550,7 @@ export default function SettingsPage() {
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   {[
                     { label: 'Platform', value: 'Quanby Case Management Platform' },
-                    { label: 'Version', value: '1.0.0 (Demo)' },
+                    { label: 'Version', value: 'v1.0.0 Demo Build' },
                     { label: 'Environment', value: process.env.NODE_ENV ?? 'development' },
                     { label: 'Framework', value: 'Next.js 15.1.6' },
                     { label: 'Runtime', value: 'Node.js 18+' },

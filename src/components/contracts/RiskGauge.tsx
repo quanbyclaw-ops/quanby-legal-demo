@@ -4,6 +4,7 @@
 // Circular SVG gauge displaying contract risk scores
 
 import { cn } from '@/lib/utils'
+import { useState, useEffect } from 'react'
 
 interface RiskGaugeProps {
   score: number
@@ -33,7 +34,15 @@ export function RiskGauge({ score, size = 'md', className, showLabel = true, ani
   const radius = (cfg.dim - cfg.stroke) / 2
   const circumference = 2 * Math.PI * radius
   const clampedScore = Math.max(0, Math.min(100, score))
-  const offset = circumference - (clampedScore / 100) * circumference
+  const targetOffset = circumference - (clampedScore / 100) * circumference
+
+  const [offset, setOffset] = useState(animated ? circumference : targetOffset)
+  useEffect(() => {
+    if (animated) {
+      const t = setTimeout(() => setOffset(targetOffset), 50)
+      return () => clearTimeout(t)
+    }
+  }, [animated, targetOffset])
   const cx = cfg.dim / 2
   const cy = cfg.dim / 2
 

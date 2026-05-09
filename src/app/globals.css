@@ -470,3 +470,41 @@
   a { text-decoration: underline; color: #000; }
   .sidebar-nav, header, footer { display: none !important; }
 }
+
+/* ─── Analytics Print Styles ──────────────────────────────────────────────── */
+@media print {
+  /* Hide navigation and interactive elements */
+  [data-sidebar],
+  nav,
+  aside,
+  .no-print,
+  button:not(.print-visible),
+  [role="navigation"] {
+    display: none !important;
+  }
+
+  /* A4 format */
+  @page {
+    size: A4;
+    margin: 20mm;
+  }
+
+  /* Charts and content fill width */
+  .recharts-wrapper,
+  .recharts-responsive-container {
+    width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  /* Section breaks */
+  section,
+  .card,
+  [class*="rounded-xl"] {
+    page-break-inside: avoid;
+    border: 1px solid #e5e7eb !important;
+    box-shadow: none !important;
+  }
+
+  /* Typography */
+  h1, h2, h3 { page-break-after: avoid; }
+}

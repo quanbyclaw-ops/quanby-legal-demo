@@ -5,6 +5,7 @@
 
 import { useRef } from 'react'
 import { Button } from '@/components/ui/button'
+import { QRCode } from '@/components/documents/QRCode'
 
 // ─── Types ─────────────────────────────────────────────────────────────────────
 
@@ -90,28 +91,7 @@ function DigitalSeal({ certificateNumber }: { certificateNumber: string }) {
   )
 }
 
-// ─── QR Code Placeholder ──────────────────────────────────────────────────────
 
-function QRCodePlaceholder({ value }: { value: string }) {
-  return (
-    <div className="flex flex-col items-center gap-1">
-      {/* Simulated QR pattern */}
-      <div className="w-20 h-20 border-2 border-navy-950 p-1 bg-white">
-        <div className="w-full h-full grid grid-cols-5 gap-0.5">
-          {Array.from({ length: 25 }).map((_, i) => (
-            <div
-              key={i}
-              className={`${[0,1,2,5,7,9,10,11,12,14,17,18,19,20,22,23,24].includes(i) ? 'bg-navy-950' : 'bg-white'} rounded-sm`}
-            />
-          ))}
-        </div>
-      </div>
-      <p className="text-xs text-gray-500 text-center max-w-[80px] leading-tight">
-        Scan to verify
-      </p>
-    </div>
-  )
-}
 
 // ─── Certificate Component ─────────────────────────────────────────────────────
 
@@ -262,7 +242,10 @@ export function NotarizationCertificate({ data, onClose, onPrint }: Notarization
             <p className="text-xs text-gray-500">Until December 31, {new Date().getFullYear()}</p>
           </div>
           <div className="flex flex-col items-center gap-2">
-            <QRCodePlaceholder value={data.verificationUrl} />
+            <div className="border-2 border-navy-950 p-0.5">
+              <QRCode url={data.verificationUrl} size={80} />
+            </div>
+            <p className="text-xs text-gray-500 text-center max-w-[80px] leading-tight">Scan to verify</p>
             <p className="text-xs text-gray-500 text-center max-w-[100px] leading-tight break-all">
               {data.verificationUrl.replace('https://', '')}
             </p>

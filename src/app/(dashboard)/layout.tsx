@@ -62,6 +62,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <div className="animate-fade-in p-4 sm:p-6">
             {children}
           </div>
+          <div className="py-3 text-center text-xs text-gray-400 dark:text-slate-600 border-t border-gray-100 dark:border-slate-800">
+            Powered by <span className="font-semibold text-gray-500 dark:text-slate-500">Quanby AI</span> · v1.0.0 Demo
+          </div>
         </main>
       </div>
     </div>
