@@ -26,6 +26,7 @@ import {
   CheckCircle2,
   ArrowLeft,
 } from 'lucide-react'
+import { toast } from 'sonner'
 
 // ─── Types ─────────────────────────────────────────────────────────────────────
 
@@ -231,9 +232,13 @@ export default function NewCasePage() {
 
       const json = await res.json()
       if (json.success) {
+        toast.success('Case created successfully', {
+          description: `${json.data.caseNumber} has been opened and is ready for assignment.`,
+        })
         router.push(`/cases/${json.data.id}`)
       } else {
         setSubmitError(json.error?.message ?? 'Failed to create case.')
+        toast.error('Failed to create case', { description: json.error?.message })
       }
     } catch {
       setSubmitError('Network error. Please try again.')

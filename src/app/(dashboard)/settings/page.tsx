@@ -550,11 +550,11 @@ export default function SettingsPage() {
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   {[
                     { label: 'Platform', value: 'Quanby Case Management Platform' },
-                    { label: 'Version', value: '1.0.0 (Demo)' },
+                    { label: 'Version', value: 'v1.0.0 — Demo Build' },
+                    { label: 'Build Date', value: 'May 2026' },
+                    { label: 'Platform Stack', value: 'Next.js 15 + PostgreSQL 16' },
                     { label: 'Environment', value: process.env.NODE_ENV ?? 'development' },
-                    { label: 'Framework', value: 'Next.js 15.1.6' },
-                    { label: 'Runtime', value: 'Node.js 18+' },
-                    { label: 'Database', value: 'PostgreSQL 15 (Prisma ORM)' },
+                    { label: 'Runtime', value: 'Node.js 22 (LTS)' },
                     { label: 'Auth Mode', value: 'Mock (Demo Mode)' },
                     { label: 'Jurisdiction', value: 'Republic of the Philippines' },
                   ].map(({ label, value }) => (

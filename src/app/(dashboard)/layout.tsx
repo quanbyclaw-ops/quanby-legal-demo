@@ -62,6 +62,19 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <div className="animate-fade-in p-4 sm:p-6">
             {children}
           </div>
+
+          {/* Powered by Quanby AI badge */}
+          <div className="px-4 sm:px-6 pb-4 flex justify-center print:hidden">
+            <a
+              href="https://quanbyai.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs text-gray-400 dark:text-slate-500 opacity-60 hover:opacity-100 transition-opacity group"
+            >
+              <span className="text-amber-500 group-hover:text-amber-400 transition-colors">⚡</span>
+              <span className="group-hover:text-amber-500 transition-colors">Powered by Quanby AI</span>
+            </a>
+          </div>
         </main>
       </div>
     </div>

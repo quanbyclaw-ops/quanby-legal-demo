@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation'
 import { ContractUploader } from '@/components/contracts/ContractUploader'
 import { ComplianceBadge } from '@/components/layout/ComplianceBadge'
 import { Badge } from '@/components/ui/badge'
+import { toast } from 'sonner'
 
 const CONTRACT_TYPES = [
   'SERVICE', 'NDA', 'EMPLOYMENT', 'LEASE', 'SALE', 'MOA', 'MOU',
@@ -119,6 +120,9 @@ export default function ContractUploadPage() {
     // Simulate analysis delay (2.5s)
     await new Promise(r => setTimeout(r, 2500))
     setIsAnalyzing(false)
+    toast.success('Contract uploaded & analyzed', {
+      description: `"${title}" has been analyzed successfully. Review AI findings now.`,
+    })
     router.push('/contracts/clx001')
   }
 

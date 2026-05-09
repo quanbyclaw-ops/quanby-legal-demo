@@ -3,9 +3,10 @@
 // Quanby Case Management Platform – Contract Agent Main Page
 // Hero section, stats, contract list, filter bar, recent analyses
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Badge } from '@/components/ui/badge'
+import { SkeletonContractCard, SkeletonStatCard } from '@/components/ui/skeleton'
 import { ComplianceBadge } from '@/components/layout/ComplianceBadge'
 import { RiskGauge } from '@/components/contracts/RiskGauge'
 import { TemplateGenerator } from '@/components/contracts/TemplateGenerator'
@@ -123,6 +124,13 @@ export default function ContractsPage() {
   const [filterRisk, setFilterRisk] = useState('')
   const [search, setSearch] = useState('')
   const [showTemplates, setShowTemplates] = useState(false)
+  const [loading, setLoading] = useState(true)
+
+  // Simulate loading (mock data delay)
+  useEffect(() => {
+    const t = setTimeout(() => setLoading(false), 800)
+    return () => clearTimeout(t)
+  }, [])
 
   const filtered = MOCK_CONTRACTS.filter(c => {
     if (search && !c.title.toLowerCase().includes(search.toLowerCase()) &&
@@ -202,22 +210,28 @@ export default function ContractsPage() {
       )}
 
       {/* Stats Row */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {[
-          { label: 'Total Contracts', value: stats.total, icon: '📄', color: 'text-navy-950', bg: 'bg-slate-50' },
-          { label: 'Analyzed', value: stats.analyzed, icon: '✅', color: 'text-green-600', bg: 'bg-green-50' },
-          { label: 'Pending Review', value: stats.pending, icon: '⏳', color: 'text-amber-600', bg: 'bg-amber-50' },
-          { label: 'High Risk Flagged', value: stats.highRisk, icon: '🚨', color: 'text-red-600', bg: 'bg-red-50' },
-        ].map(stat => (
-          <div key={stat.label} className={`rounded-xl border border-gray-200 ${stat.bg} p-4`}>
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-xl">{stat.icon}</span>
+      {loading ? (
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          {Array.from({ length: 4 }).map((_, i) => <SkeletonStatCard key={i} />)}
+        </div>
+      ) : (
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          {[
+            { label: 'Total Contracts', value: stats.total, icon: '📄', color: 'text-navy-950', bg: 'bg-slate-50' },
+            { label: 'Analyzed', value: stats.analyzed, icon: '✅', color: 'text-green-600', bg: 'bg-green-50' },
+            { label: 'Pending Review', value: stats.pending, icon: '⏳', color: 'text-amber-600', bg: 'bg-amber-50' },
+            { label: 'High Risk Flagged', value: stats.highRisk, icon: '🚨', color: 'text-red-600', bg: 'bg-red-50' },
+          ].map(stat => (
+            <div key={stat.label} className={`rounded-xl border border-gray-200 ${stat.bg} p-4`}>
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-xl">{stat.icon}</span>
+              </div>
+              <p className={`text-3xl font-bold ${stat.color}`}>{stat.value}</p>
+              <p className="text-xs text-gray-500 font-medium mt-0.5">{stat.label}</p>
             </div>
-            <p className={`text-3xl font-bold ${stat.color}`}>{stat.value}</p>
-            <p className="text-xs text-gray-500 font-medium mt-0.5">{stat.label}</p>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
 
       {/* Filters + Search */}
       <div className="rounded-xl border border-gray-200 bg-white p-4 flex flex-wrap gap-3 items-center">
@@ -259,7 +273,9 @@ export default function ContractsPage() {
           <span className="text-xs text-gray-400">{filtered.length} of {MOCK_CONTRACTS.length} shown</span>
         </div>
         <div className="divide-y divide-gray-100">
-          {filtered.length === 0 ? (
+          {loading ? (
+            Array.from({ length: 4 }).map((_, i) => <SkeletonContractCard key={i} />)
+          ) : filtered.length === 0 ? (
             <div className="px-6 py-12 text-center">
               <p className="text-3xl mb-2">📭</p>
               <p className="text-sm text-gray-500">No contracts match the current filters.</p>

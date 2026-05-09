@@ -6,6 +6,7 @@ import { getCurrentUser } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { ComplianceBadge } from '@/components/layout/ComplianceBadge'
 import { Badge } from '@/components/ui/badge'
+import { StatCards } from '@/components/dashboard/StatCards'
 import { CASE_TYPES, CASE_STATUSES, CASE_PRIORITIES } from '@/lib/constants'
 import type { CaseType, CaseStatus, CasePriority } from '@/types'
 
@@ -140,6 +141,8 @@ export default async function DashboardPage() {
       changePositive: true,
       bgClass: 'bg-navy-50',
       iconBg: 'bg-navy-100',
+      darkBg: 'dark:bg-slate-800',
+      darkIconBg: 'dark:bg-slate-700',
       href: '/cases',
     },
     {
@@ -150,6 +153,8 @@ export default async function DashboardPage() {
       changePositive: true,
       bgClass: 'bg-green-50',
       iconBg: 'bg-green-100',
+      darkBg: 'dark:bg-green-950/30',
+      darkIconBg: 'dark:bg-green-900/40',
       href: '/cases',
     },
     {
@@ -160,6 +165,8 @@ export default async function DashboardPage() {
       changePositive: false,
       bgClass: 'bg-yellow-50',
       iconBg: 'bg-yellow-100',
+      darkBg: 'dark:bg-yellow-950/20',
+      darkIconBg: 'dark:bg-yellow-900/30',
       href: '/intake',
     },
     {
@@ -170,6 +177,8 @@ export default async function DashboardPage() {
       changePositive: approachingDeadlines === 0,
       bgClass: approachingDeadlines > 0 ? 'bg-red-50' : 'bg-green-50',
       iconBg: approachingDeadlines > 0 ? 'bg-red-100' : 'bg-green-100',
+      darkBg: approachingDeadlines > 0 ? 'dark:bg-red-950/30' : 'dark:bg-green-950/30',
+      darkIconBg: approachingDeadlines > 0 ? 'dark:bg-red-900/40' : 'dark:bg-green-900/40',
       href: '/cases',
     },
     {
@@ -180,6 +189,8 @@ export default async function DashboardPage() {
       changePositive: true,
       bgClass: 'bg-blue-50',
       iconBg: 'bg-blue-100',
+      darkBg: 'dark:bg-blue-950/30',
+      darkIconBg: 'dark:bg-blue-900/40',
       href: '/contracts',
     },
   ]
@@ -210,27 +221,8 @@ export default async function DashboardPage() {
         </div>
       </div>
 
-      {/* Stat Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
-        {STAT_CARDS.map((stat) => (
-          <a key={stat.label} href={stat.href} className={`block rounded-xl border border-gray-100 p-4 ${stat.bgClass} transition-all hover:shadow-lg hover:scale-[1.02] cursor-pointer`}>
-            <div className="flex items-center justify-between mb-3">
-              <div className={`w-10 h-10 rounded-lg ${stat.iconBg} flex items-center justify-center text-xl`}>
-                {stat.icon}
-              </div>
-              <span
-                className={`text-xs font-medium px-2 py-0.5 rounded-full ${
-                  stat.changePositive ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
-                }`}
-              >
-                {stat.change}
-              </span>
-            </div>
-            <p className="text-2xl font-bold text-navy-950">{stat.value}</p>
-            <p className="text-xs text-gray-500 mt-0.5">{stat.label}</p>
-          </a>
-        ))}
-      </div>
+      {/* Stat Cards — client component with animated counters */}
+      <StatCards cards={STAT_CARDS} />
 
       {/* Quick Actions */}
       <div className="bg-white rounded-xl border border-gray-100 p-4">
@@ -285,7 +277,7 @@ export default async function DashboardPage() {
                   <th className="text-left px-4 py-3 font-medium">Deadline</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-50">
+              <tbody className="divide-y divide-gray-50 dark:divide-slate-800">
                 {recentCases.length === 0 && (
                   <tr>
                     <td colSpan={6} className="px-4 py-8 text-center text-gray-400 text-sm">
@@ -301,7 +293,7 @@ export default async function DashboardPage() {
                   const countdown = formatDeadlineCountdown(c.reglementaryDeadline)
 
                   return (
-                    <tr key={c.id} className="hover:bg-gray-50 transition-colors">
+                    <tr key={c.id} className="hover:bg-gray-50 dark:hover:bg-slate-800/50 transition-colors">
                       <td className="px-4 py-3">
                         <Link href={`/cases/${c.id}`} className="font-mono text-xs text-navy-700 hover:text-blue-600 font-medium">
                           {c.caseNumber}

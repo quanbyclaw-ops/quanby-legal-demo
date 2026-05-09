@@ -40,6 +40,7 @@ import {
   ExternalLink,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { toast } from 'sonner'
 
 // ─── Types ─────────────────────────────────────────────────────────────────────
 
@@ -272,8 +273,12 @@ export default function IntakePage() {
       const json = await res.json()
       if (json.success) {
         setSubmitted({ caseNumber: json.data.caseNumber, caseId: json.data.caseId })
+        toast.success('Intake submitted successfully', {
+          description: `Case No. ${json.data.caseNumber} has been created and is pending assignment.`,
+        })
       } else {
         setErrors({ submit: json.error?.message ?? 'Submission failed. Please try again.' })
+        toast.error('Submission failed', { description: json.error?.message })
       }
     } catch {
       setErrors({ submit: 'Network error. Please try again.' })

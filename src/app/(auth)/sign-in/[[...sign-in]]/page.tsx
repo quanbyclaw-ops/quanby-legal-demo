@@ -7,6 +7,7 @@ import * as React from 'react'
 import { useRouter } from 'next/navigation'
 import { DEMO_USERS, type MockUser } from '@/lib/auth-client'
 import { cn } from '@/lib/utils'
+import { toast } from 'sonner'
 
 // ─── Role badge colors ─────────────────────────────────────────────────────────
 
@@ -35,6 +36,9 @@ export default function SignInPage() {
         body: JSON.stringify({ userId: user.id }),
       })
       if (!res.ok) throw new Error('Failed to authenticate')
+      toast.success(`Welcome, ${user.firstName}!`, {
+        description: `Signed in as ${user.name} · ${user.role}`,
+      })
       router.push('/dashboard')
       router.refresh()
     } catch {
