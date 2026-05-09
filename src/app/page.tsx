@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Root Landing Page
+// Quanby Case Management Platform – Root Landing Page
 // Shows hero if not logged in, redirects to /dashboard if session cookie exists
 
 import { cookies } from 'next/headers'
@@ -158,7 +158,7 @@ export default async function RootPage() {
 
       {/* ── Footer ────────────────────────────────────────────────────────── */}
       <footer className="relative z-10 flex items-center justify-center border-t border-white/5 px-6 py-5 text-xs text-slate-500">
-        © {new Date().getFullYear()} Quanby Legal Platform · Demo Environment ·
+        © {new Date().getFullYear()} Quanby Case Management Platform · Demo Environment ·
         All rights reserved
       </footer>
     </main>

@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Notifications API Route
+// Quanby Case Management Platform – Notifications API Route
 // GET: List notifications for current user (with unread count)
 // PATCH: Mark as read (single or all)
 

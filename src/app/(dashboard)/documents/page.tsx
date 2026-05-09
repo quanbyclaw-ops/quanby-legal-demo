@@ -1,6 +1,6 @@
 'use client'
 
-// Quanby Legal Platform – Document Management Hub (Prompt 6)
+// Quanby Case Management Platform – Document Management Hub (Prompt 6)
 // Full-featured document management: upload, generate, filter, preview
 
 import { useState, useEffect, useCallback } from 'react'

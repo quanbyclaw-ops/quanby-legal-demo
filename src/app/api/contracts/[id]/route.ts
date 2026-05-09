@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Single Contract CRUD Route
+// Quanby Case Management Platform – Single Contract CRUD Route
 // GET /api/contracts/[id] – Full contract with analyses, chats, linked case
 // PATCH /api/contracts/[id] – Update contract metadata/status
 // DELETE /api/contracts/[id] – Remove contract

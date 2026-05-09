@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Theme Provider (next-themes)
+// Quanby Case Management Platform – Theme Provider (next-themes)
 
 'use client'
 

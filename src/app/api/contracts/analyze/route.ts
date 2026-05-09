@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Contract AI Analysis Route
+// Quanby Case Management Platform – Contract AI Analysis Route
 // POST /api/contracts/analyze – triggers AI analysis on a contract
 
 import { NextRequest, NextResponse } from 'next/server'

@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Contract Templates API Route
+// Quanby Case Management Platform – Contract Templates API Route
 // GET /api/contracts/templates – List available templates
 // POST /api/contracts/templates – Generate contract from template with variables
 

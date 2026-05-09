@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Clients API
+// Quanby Case Management Platform – Clients API
 // GET  /api/clients — List clients with search/filter
 // POST /api/clients — Create new client
 

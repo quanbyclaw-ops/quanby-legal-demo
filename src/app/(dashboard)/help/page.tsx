@@ -36,7 +36,7 @@ export default function HelpPage() {
       <div>
         <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Help & Documentation</h1>
         <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-          Learn how to use the Quanby Legal Platform
+          Learn how to use the Quanby Case Management Platform
         </p>
       </div>
 

@@ -1,6 +1,6 @@
 'use client'
 
-// Quanby Legal Platform – e-Notarization Step Flow
+// Quanby Case Management Platform – e-Notarization Step Flow
 // Steps: Select Document → Verify Identity → Review → Notarize → Certificate
 
 import { useState, useRef } from 'react'

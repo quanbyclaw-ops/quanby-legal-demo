@@ -1,6 +1,6 @@
 'use client'
 
-// Quanby Legal Platform – Settings Page
+// Quanby Case Management Platform – Settings Page
 // User profile, notification preferences, theme, demo account switcher, system info
 
 import { useState, useEffect } from 'react'
@@ -393,7 +393,7 @@ export default function SettingsPage() {
               </div>
 
               <p className="mb-4 text-sm text-slate-600 dark:text-slate-400">
-                Choose how the Quanby Legal Platform looks on your device.
+                Choose how the Quanby Case Management Platform looks on your device.
               </p>
 
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
@@ -549,7 +549,7 @@ export default function SettingsPage() {
 
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   {[
-                    { label: 'Platform', value: 'Quanby Legal Platform' },
+                    { label: 'Platform', value: 'Quanby Case Management Platform' },
                     { label: 'Version', value: '1.0.0 (Demo)' },
                     { label: 'Environment', value: process.env.NODE_ENV ?? 'development' },
                     { label: 'Framework', value: 'Next.js 15.1.6' },

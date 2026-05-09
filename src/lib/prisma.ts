@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Prisma Client Singleton
+// Quanby Case Management Platform – Prisma Client Singleton
 // Prevents multiple Prisma instances in development (Next.js hot reload)
 
 import { PrismaClient } from '@prisma/client'

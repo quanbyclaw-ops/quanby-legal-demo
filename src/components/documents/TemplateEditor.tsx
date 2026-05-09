@@ -1,6 +1,6 @@
 'use client'
 
-// Quanby Legal Platform – Template Editor with Auto-populate and Live Preview
+// Quanby Case Management Platform – Template Editor with Auto-populate and Live Preview
 // Fills {{placeholder}} fields with form data; generates preview document
 
 import { useState, useMemo, useCallback } from 'react'

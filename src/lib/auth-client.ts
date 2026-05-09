@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Client-safe auth constants
+// Quanby Case Management Platform – Client-safe auth constants
 // Safe to import in client components — no server-only APIs
 
 // ─── Type ──────────────────────────────────────────────────────────────────────

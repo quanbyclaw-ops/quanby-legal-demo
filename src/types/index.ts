@@ -1,4 +1,4 @@
-// Quanby Legal Platform – TypeScript Type Definitions v2.0
+// Quanby Case Management Platform – TypeScript Type Definitions v2.0
 // Central type registry for the entire application
 // Updated: ContractTemplate, ContractChat, ENotarization + new enums
 

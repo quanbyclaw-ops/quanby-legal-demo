@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Demo Auth: Set Mock User Cookie
+// Quanby Case Management Platform – Demo Auth: Set Mock User Cookie
 // POST /api/auth/set-user – sets the ql_demo_user cookie for demo session
 
 import { NextRequest, NextResponse } from 'next/server'

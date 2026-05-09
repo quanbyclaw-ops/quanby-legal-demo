@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Documents API Route
+// Quanby Case Management Platform – Documents API Route
 // GET /api/documents – list documents with filters
 // POST /api/documents – upload/create document record
 

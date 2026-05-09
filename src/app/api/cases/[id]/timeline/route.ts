@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Case Timeline API
+// Quanby Case Management Platform – Case Timeline API
 // GET /api/cases/[id]/timeline – list timeline events
 // POST /api/cases/[id]/timeline – add new event
 

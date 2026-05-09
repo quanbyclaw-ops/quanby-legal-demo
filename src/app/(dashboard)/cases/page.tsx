@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Cases List Page
+// Quanby Case Management Platform – Cases List Page
 // Prompt 5: Full case management with search, filters, sortable table, pagination
 'use client'
 

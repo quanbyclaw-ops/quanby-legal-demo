@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Table Components (shadcn/ui pattern)
+// Quanby Case Management Platform – Table Components (shadcn/ui pattern)
 
 import * as React from 'react'
 import { cn } from '@/lib/utils'

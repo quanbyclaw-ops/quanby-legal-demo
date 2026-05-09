@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Dropdown Menu Component (Radix UI + shadcn/ui pattern)
+// Quanby Case Management Platform – Dropdown Menu Component (Radix UI + shadcn/ui pattern)
 
 'use client'
 

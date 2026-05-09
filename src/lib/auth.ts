@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Mock Authentication Utilities
+// Quanby Case Management Platform – Mock Authentication Utilities
 // Replaces Clerk for demo/development mode.
 // RA 10173 note: In production, replace with a compliant IdP (e.g., Keycloak + TOTP).
 

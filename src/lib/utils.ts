@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Utility Functions
+// Quanby Case Management Platform – Utility Functions
 
 import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'

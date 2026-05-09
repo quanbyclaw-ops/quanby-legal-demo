@@ -1,6 +1,6 @@
 'use client'
 
-// Quanby Legal Platform – Document Upload Component
+// Quanby Case Management Platform – Document Upload Component
 // Drag-and-drop multi-file upload with validation and case linking
 
 import { useState, useRef, useCallback } from 'react'

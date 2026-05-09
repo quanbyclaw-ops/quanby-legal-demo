@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Single Case CRUD API
+// Quanby Case Management Platform – Single Case CRUD API
 // GET /api/cases/[id] – Full case with relations
 // PATCH /api/cases/[id] – Update case fields
 // DELETE /api/cases/[id] – Soft delete (archive)

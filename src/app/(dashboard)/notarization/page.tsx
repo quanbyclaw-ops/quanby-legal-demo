@@ -1,6 +1,6 @@
 'use client'
 
-// Quanby Legal Platform – e-Notarization Page (Prompt 6)
+// Quanby Case Management Platform – e-Notarization Page (Prompt 6)
 // Full workflow: pending queue, request form, status tracking, certificate view
 
 import { useState } from 'react'

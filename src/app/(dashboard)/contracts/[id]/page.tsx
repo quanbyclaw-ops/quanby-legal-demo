@@ -1,6 +1,6 @@
 'use client'
 
-// Quanby Legal Platform – Contract Detail & AI Analysis Page
+// Quanby Case Management Platform – Contract Detail & AI Analysis Page
 // Full tabbed layout: Analysis | Chat | Details | Documents | History
 
 import { useState } from 'react'

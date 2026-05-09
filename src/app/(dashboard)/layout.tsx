@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Dashboard Shell Layout
+// Quanby Case Management Platform – Dashboard Shell Layout
 // Responsive: sidebar (260px desktop / icon-only tablet / drawer mobile) + TopNav + content
 
 'use client'

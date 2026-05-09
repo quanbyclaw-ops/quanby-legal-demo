@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Main Dashboard
+// Quanby Case Management Platform – Main Dashboard
 // Prompt 5: Full dashboard with stats, cases, deadlines, activity feed
 import type { Metadata } from 'next'
 import Link from 'next/link'

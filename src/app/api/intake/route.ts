@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Client Intake API
+// Quanby Case Management Platform – Client Intake API
 // POST /api/intake — Creates Client + Case (INTAKE status) + initial CaseTimeline entry
 
 import { NextRequest, NextResponse } from 'next/server'

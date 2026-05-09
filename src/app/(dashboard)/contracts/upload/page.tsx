@@ -1,6 +1,6 @@
 'use client'
 
-// Quanby Legal Platform – Contract Upload Page
+// Quanby Case Management Platform – Contract Upload Page
 // Drag-and-drop upload + metadata form + AI analysis trigger
 
 import { useState, useCallback } from 'react'

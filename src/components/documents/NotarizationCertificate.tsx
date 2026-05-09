@@ -1,6 +1,6 @@
 'use client'
 
-// Quanby Legal Platform – Notarization Certificate Display
+// Quanby Case Management Platform – Notarization Certificate Display
 // Formal Philippine e-Notarization certificate with Republic header, digital seal, QR code
 
 import { useRef } from 'react'

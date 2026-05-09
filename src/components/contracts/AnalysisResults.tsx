@@ -1,6 +1,6 @@
 'use client'
 
-// Quanby Legal Platform – Analysis Results Component
+// Quanby Case Management Platform – Analysis Results Component
 // Renders full contract AI analysis: clauses, risks, compliance, suggestions
 
 import { useState } from 'react'

@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Dialog Component (Radix UI + shadcn/ui pattern)
+// Quanby Case Management Platform – Dialog Component (Radix UI + shadcn/ui pattern)
 
 'use client'
 

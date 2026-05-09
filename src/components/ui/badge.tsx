@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Badge Component (shadcn/ui pattern)
+// Quanby Case Management Platform – Badge Component (shadcn/ui pattern)
 
 import * as React from 'react'
 import { cva, type VariantProps } from 'class-variance-authority'

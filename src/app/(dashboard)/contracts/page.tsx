@@ -1,6 +1,6 @@
 'use client'
 
-// Quanby Legal Platform – Contract Agent Main Page
+// Quanby Case Management Platform – Contract Agent Main Page
 // Hero section, stats, contract list, filter bar, recent analyses
 
 import { useState } from 'react'

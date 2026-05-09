@@ -1,4 +1,4 @@
-// Quanby Legal Platform – e-Notarization API
+// Quanby Case Management Platform – e-Notarization API
 // GET /api/notarization – list notarization records
 // POST /api/notarization – create notarization request
 // PATCH /api/notarization – update notarization status

@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Zustand Global Store
+// Quanby Case Management Platform – Zustand Global Store
 // Client-side state management (non-server state only)
 
 import { create } from 'zustand'

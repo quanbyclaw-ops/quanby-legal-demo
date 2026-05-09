@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Case Tasks API
+// Quanby Case Management Platform – Case Tasks API
 // GET /api/cases/[id]/tasks – list tasks
 // POST /api/cases/[id]/tasks – create task
 // PATCH /api/cases/[id]/tasks – update task (complete, reassign)

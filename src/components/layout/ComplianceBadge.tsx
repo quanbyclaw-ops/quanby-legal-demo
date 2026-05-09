@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Compliance Badge Component
+// Quanby Case Management Platform – Compliance Badge Component
 // Displays Supreme Court of the Philippines compliance certification badge
 
 import * as React from 'react'

@@ -1,6 +1,6 @@
 'use client'
 
-// Quanby Legal Platform – Philippine Legal Template Selector
+// Quanby Case Management Platform – Philippine Legal Template Selector
 // Grid of Philippine legal document templates
 
 import { useState } from 'react'

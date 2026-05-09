@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Root Layout
+// Quanby Case Management Platform – Root Layout
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { ThemeProvider } from '@/components/layout/ThemeProvider'
@@ -14,8 +14,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Quanby Legal Platform',
-    template: '%s | Quanby Legal Platform',
+    default: 'Quanby Case Management Platform',
+    template: '%s | Quanby Case Management Platform',
   },
   description:
     'Enterprise case management system for Philippine legal practice. Compliant with RA 10173, NIST SP 800-53, and Supreme Court e-Filing standards.',
@@ -27,8 +27,8 @@ export const metadata: Metadata = {
     'court',
     'legal technology',
   ],
-  authors: [{ name: 'Quanby Legal Platform' }],
-  creator: 'Quanby Legal Platform',
+  authors: [{ name: 'Quanby Case Management Platform' }],
+  creator: 'Quanby Case Management Platform',
   robots: {
     index: false, // Internal system – not for public indexing
     follow: false,

@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Contract Chat API Route
+// Quanby Case Management Platform – Contract Chat API Route
 // GET /api/contracts/[id]/chat – Chat history for contract
 // POST /api/contracts/[id]/chat – Send message, receive contextual AI response
 

@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Document Generation API
+// Quanby Case Management Platform – Document Generation API
 // POST /api/documents/generate – generate document from template with variable substitution
 
 import { NextRequest, NextResponse } from 'next/server'

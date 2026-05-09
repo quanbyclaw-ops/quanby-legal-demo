@@ -1,6 +1,6 @@
 'use client'
 
-// Quanby Legal Platform – Risk Gauge Component
+// Quanby Case Management Platform – Risk Gauge Component
 // Circular SVG gauge displaying contract risk scores
 
 import { cn } from '@/lib/utils'

@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Application Constants
+// Quanby Case Management Platform – Application Constants
 // Philippine legal system reference data
 
 // ─── Case Types ───────────────────────────────────────────────────────────────

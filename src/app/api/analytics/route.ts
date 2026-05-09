@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Analytics API Route
+// Quanby Case Management Platform – Analytics API Route
 // GET /api/analytics – returns dashboard and analytics data
 // Serves both live Prisma aggregates and supplementary mock data for demo
 

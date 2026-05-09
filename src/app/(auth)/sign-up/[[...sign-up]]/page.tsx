@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Sign Up Page (Mock Auth)
+// Quanby Case Management Platform – Sign Up Page (Mock Auth)
 // In demo mode, registration is handled by role selection via sign-in.
 // This page redirects to sign-in for the demo environment.
 import { redirect } from 'next/navigation'

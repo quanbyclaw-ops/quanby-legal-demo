@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Sidebar Navigation Component
+// Quanby Case Management Platform – Sidebar Navigation Component
 // Navy blue sidebar with collapse/expand and mobile drawer support
 
 'use client'

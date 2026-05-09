@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Contracts API Route
+// Quanby Case Management Platform – Contracts API Route
 import { NextRequest, NextResponse } from 'next/server'
 import { getCurrentUser } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'

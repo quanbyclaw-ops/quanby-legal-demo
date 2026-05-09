@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Top Navigation Bar
+// Quanby Case Management Platform – Top Navigation Bar
 
 'use client'
 

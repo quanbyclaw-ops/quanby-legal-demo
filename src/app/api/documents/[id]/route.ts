@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Document Single Record API
+// Quanby Case Management Platform – Document Single Record API
 // GET /api/documents/[id] – fetch document with case info
 // PATCH /api/documents/[id] – update document metadata
 // DELETE /api/documents/[id] – soft-delete document

@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Sign In Page (Demo Auth)
+// Quanby Case Management Platform – Sign In Page (Demo Auth)
 // Centered card on navy gradient; select a demo account to proceed
 
 'use client'
@@ -67,7 +67,7 @@ export default function SignInPage() {
             <ScalesIcon className="h-7 w-7 text-white" />
           </div>
           <div className="text-center">
-            <h1 className="text-xl font-bold tracking-tight text-white">Quanby Legal Platform</h1>
+            <h1 className="text-xl font-bold tracking-tight text-white">Quanby Case Management Platform</h1>
             <p className="mt-0.5 text-xs font-semibold uppercase tracking-widest text-blue-400">
               Demo Environment
             </p>
@@ -176,7 +176,7 @@ export default function SignInPage() {
         </div>
 
         <p className="mt-6 text-center text-xs text-slate-600">
-          © {new Date().getFullYear()} Quanby Legal Platform
+          © {new Date().getFullYear()} Quanby Case Management Platform
         </p>
       </div>
     </div>

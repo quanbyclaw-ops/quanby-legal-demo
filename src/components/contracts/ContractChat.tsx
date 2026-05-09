@@ -1,6 +1,6 @@
 'use client'
 
-// Quanby Legal Platform – Contract Chat Component
+// Quanby Case Management Platform – Contract Chat Component
 // Interactive AI chat interface for contract analysis
 
 import { useState, useRef, useEffect, useCallback } from 'react'

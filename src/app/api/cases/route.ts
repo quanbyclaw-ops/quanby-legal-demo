@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Cases API Route
+// Quanby Case Management Platform – Cases API Route
 // GET /api/cases – list cases with filters
 // POST /api/cases – create new case
 

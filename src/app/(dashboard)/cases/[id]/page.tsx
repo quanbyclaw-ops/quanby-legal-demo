@@ -1,4 +1,4 @@
-// Quanby Legal Platform – Case Detail Page
+// Quanby Case Management Platform – Case Detail Page
 // Prompt 5: Full detail with tabs: Overview, Timeline, Tasks, Documents, Contracts
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
