@@ -107,10 +107,36 @@ export function TopNav({ onMenuClick, currentUser, className }: TopNavProps) {
   const { theme, setTheme } = useTheme()
   const breadcrumbs = useBreadcrumbs()
   const [searchOpen, setSearchOpen] = React.useState(false)
+  const [searchQuery, setSearchQuery] = React.useState('')
+  const [searchResults, setSearchResults] = React.useState<{cases: any[], contracts: any[], documents: any[]}|null>(null)
+  const [searching, setSearching] = React.useState(false)
+  const searchTimerRef = React.useRef<NodeJS.Timeout|null>(null)
   const [mounted, setMounted] = React.useState(false)
   const unreadCount = MOCK_NOTIFICATIONS.filter((n) => !n.read).length
 
   React.useEffect(() => { setMounted(true) }, [])
+
+  React.useEffect(() => {
+    if (!searchQuery.trim()) { setSearchResults(null); return }
+    if (searchTimerRef.current) clearTimeout(searchTimerRef.current)
+    searchTimerRef.current = setTimeout(async () => {
+      setSearching(true)
+      try {
+        const [casesRes, contractsRes, docsRes] = await Promise.allSettled([
+          fetch(`/api/cases?search=${encodeURIComponent(searchQuery)}`).then(r => r.json()),
+          fetch(`/api/contracts?search=${encodeURIComponent(searchQuery)}`).then(r => r.json()),
+          fetch(`/api/documents?search=${encodeURIComponent(searchQuery)}`).then(r => r.json()),
+        ])
+        setSearchResults({
+          cases: (casesRes.status === 'fulfilled' ? (casesRes.value.data || casesRes.value || []) : []).slice(0, 5),
+          contracts: (contractsRes.status === 'fulfilled' ? (contractsRes.value.data || contractsRes.value || []) : []).slice(0, 5),
+          documents: (docsRes.status === 'fulfilled' ? (docsRes.value.data || docsRes.value || []) : []).slice(0, 5),
+        })
+      } catch { setSearchResults(null) }
+      setSearching(false)
+    }, 300)
+    return () => { if (searchTimerRef.current) clearTimeout(searchTimerRef.current) }
+  }, [searchQuery])
 
   // Use passed user or fall back to first demo user
   const user = currentUser ?? DEMO_USERS[0]
@@ -175,10 +201,54 @@ export function TopNav({ onMenuClick, currentUser, className }: TopNavProps) {
             <input
               type="search"
               autoFocus
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={(e) => { if (e.key === 'Escape') { setSearchOpen(false); setSearchQuery(''); setSearchResults(null) } }}
               placeholder="Search cases, clients, documents…"
               className="h-9 w-full rounded-md border border-input bg-slate-50 pl-9 pr-4 text-sm outline-none ring-offset-background placeholder:text-muted-foreground focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 dark:bg-slate-800"
               aria-label="Global search"
             />
+            {searchQuery.trim() && searchResults && (
+              <div className="absolute left-0 top-full mt-1 w-full rounded-lg border border-slate-200 bg-white shadow-xl dark:border-slate-700 dark:bg-slate-900 max-h-80 overflow-y-auto z-50">
+                {searching && <p className="px-4 py-3 text-xs text-slate-500">Searching...</p>}
+                {!searching && searchResults.cases.length === 0 && searchResults.contracts.length === 0 && searchResults.documents.length === 0 && (
+                  <p className="px-4 py-3 text-xs text-slate-500">No results found</p>
+                )}
+                {searchResults.cases.length > 0 && (
+                  <div>
+                    <p className="px-4 pt-2 pb-1 text-[10px] font-semibold uppercase tracking-wider text-slate-400">Cases</p>
+                    {searchResults.cases.map((c: any) => (
+                      <a key={c.id} href={`/cases/${c.id}`} className="flex items-center gap-2 px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" onClick={() => { setSearchOpen(false); setSearchQuery(''); setSearchResults(null) }}>
+                        <span className="text-blue-600">⚖️</span>
+                        <span className="truncate text-slate-900 dark:text-white">{c.caseNumber || c.title}</span>
+                      </a>
+                    ))}
+                  </div>
+                )}
+                {searchResults.contracts.length > 0 && (
+                  <div>
+                    <p className="px-4 pt-2 pb-1 text-[10px] font-semibold uppercase tracking-wider text-slate-400">Contracts</p>
+                    {searchResults.contracts.map((c: any) => (
+                      <a key={c.id} href={`/contracts/${c.id}`} className="flex items-center gap-2 px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" onClick={() => { setSearchOpen(false); setSearchQuery(''); setSearchResults(null) }}>
+                        <span className="text-blue-600">📄</span>
+                        <span className="truncate text-slate-900 dark:text-white">{c.title}</span>
+                      </a>
+                    ))}
+                  </div>
+                )}
+                {searchResults.documents.length > 0 && (
+                  <div>
+                    <p className="px-4 pt-2 pb-1 text-[10px] font-semibold uppercase tracking-wider text-slate-400">Documents</p>
+                    {searchResults.documents.map((d: any) => (
+                      <a key={d.id} href={`/documents`} className="flex items-center gap-2 px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" onClick={() => { setSearchOpen(false); setSearchQuery(''); setSearchResults(null) }}>
+                        <span className="text-blue-600">📁</span>
+                        <span className="truncate text-slate-900 dark:text-white">{d.title || d.name}</span>
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
           <Button
             variant="ghost"
@@ -262,11 +332,7 @@ function ThemeToggle({ theme, setTheme }: { theme?: string; setTheme: (t: string
           Dark
           {theme === 'dark' && <Check className="ml-auto h-3.5 w-3.5 text-blue-600" />}
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('system')}>
-          <Monitor className="mr-2 h-4 w-4" />
-          System
-          {theme === 'system' && <Check className="ml-auto h-3.5 w-3.5 text-blue-600" />}
-        </DropdownMenuItem>
+
       </DropdownMenuContent>
     </DropdownMenu>
   )
