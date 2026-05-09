@@ -140,6 +140,7 @@ export default async function DashboardPage() {
       changePositive: true,
       bgClass: 'bg-navy-50',
       iconBg: 'bg-navy-100',
+      href: '/cases',
     },
     {
       label: 'Active Cases',
@@ -149,6 +150,7 @@ export default async function DashboardPage() {
       changePositive: true,
       bgClass: 'bg-green-50',
       iconBg: 'bg-green-100',
+      href: '/cases',
     },
     {
       label: 'Pending Intake',
@@ -158,6 +160,7 @@ export default async function DashboardPage() {
       changePositive: false,
       bgClass: 'bg-yellow-50',
       iconBg: 'bg-yellow-100',
+      href: '/intake',
     },
     {
       label: 'Approaching Deadlines',
@@ -167,6 +170,7 @@ export default async function DashboardPage() {
       changePositive: approachingDeadlines === 0,
       bgClass: approachingDeadlines > 0 ? 'bg-red-50' : 'bg-green-50',
       iconBg: approachingDeadlines > 0 ? 'bg-red-100' : 'bg-green-100',
+      href: '/cases',
     },
     {
       label: 'Contracts Under Review',
@@ -176,6 +180,7 @@ export default async function DashboardPage() {
       changePositive: true,
       bgClass: 'bg-blue-50',
       iconBg: 'bg-blue-100',
+      href: '/contracts',
     },
   ]
 
@@ -208,7 +213,7 @@ export default async function DashboardPage() {
       {/* Stat Cards */}
       <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
         {STAT_CARDS.map((stat) => (
-          <div key={stat.label} className={`rounded-xl border border-gray-100 p-4 ${stat.bgClass}`}>
+          <a key={stat.label} href={stat.href} className={`block rounded-xl border border-gray-100 p-4 ${stat.bgClass} transition-all hover:shadow-lg hover:scale-[1.02] cursor-pointer`}>
             <div className="flex items-center justify-between mb-3">
               <div className={`w-10 h-10 rounded-lg ${stat.iconBg} flex items-center justify-center text-xl`}>
                 {stat.icon}
@@ -223,7 +228,7 @@ export default async function DashboardPage() {
             </div>
             <p className="text-2xl font-bold text-navy-950">{stat.value}</p>
             <p className="text-xs text-gray-500 mt-0.5">{stat.label}</p>
-          </div>
+          </a>
         ))}
       </div>
 
